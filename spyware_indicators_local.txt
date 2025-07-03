@@ -1,0 +1,4 @@
+# Indicateurs offline
+Pegasus
+XAgent
+FinFisher
