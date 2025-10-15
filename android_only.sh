@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Lab4Phone / Kit — ANDROID-ONLY v3.16-k02
+# Lab4Phone / Kit — ANDROID-ONLY v3-
 # Version complète stable — horodatage, résumé humain, causes, backup, blockchain, ledger, recommandations
 # Auteur : Sombra CyberLab Solution
 
