@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Lab4Phone / Kit002 — ANDROID-ONLY v3.16-k02
+# Lab4Phone / Kit — ANDROID-ONLY v3.16-k02
 # Version complète stable — horodatage, résumé humain, causes, backup, blockchain, ledger, recommandations
-# Auteur : Sombra CyberTool Solution
+# Auteur : Sombra CyberLab Solution
 
 set -euo pipefail
 IFS=$'\n\t'
@@ -22,7 +22,7 @@ LOGFILE="$LOG_DIR/android_${RUN_TS}.log"
 
 exec > >(tee -a "$RAPPORT_FILE") 2>&1
 
-echo "[+] === Début Lab4Phone ANDROID-ONLY v3.16-k02 ==="
+echo "[+] === Début Lab4Phone ANDROID-ONLY v3 ==="
 echo "[i] Horodatage début : $(date)"
 
 # --- Vérification ADB
@@ -162,7 +162,7 @@ echo "$(date -u +%Y-%m-%dT%H:%M:%SZ),$HOST,$MODEL,$ANDROID_VER,$PATCH,$RISK,$SHA
 END_S=$(date +%s)
 ELAPSED=$((END_S - START_S))
 echo
-echo "=== Résumé opérateur (K02 v3.16) ==="
+echo "=== Résumé opérateur (K0V3) ==="
 echo "Modèle: $VENDOR / $MODEL | Android $ANDROID_VER ($PATCH)"
 echo "Risque: $ICON $RISK — Éléments potentiellement intrusifs"
 echo "--- Décisions opérateur ---"
@@ -171,4 +171,4 @@ echo "Rapport: $RAPPORT_FILE"
 echo "Durée d’analyse: ${ELAPSED}s"
 echo "[i] Ledger: $LEDGER"
 echo "[i] Horodatage fin : $(date)"
-echo "[+] === Fin Lab4Phone ANDROID-ONLY v3.16-k02 ==="
+echo "[+] === Fin Lab4Phone ANDROID-ONLY v3 ==="
