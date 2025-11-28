@@ -1,31 +1,62 @@
-# Lab4Phone — Android-Only v3 (K02)
+# 🛰️ Lab4Phone — Mobile Forensics Toolkit  
+_Outils d’analyse iOS & Android : diagnostics, detection spyware, IOC, MVT, rapports, coffre probatoire._
 
-[![CI](https://github.com/FredoCol/Lab4Phone/actions/workflows/ci.yml/badge.svg)](../../actions)
-[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-[![Shell](https://img.shields.io/badge/lang-shell-89e051.svg)]()
-
-> **Lab4Phone** est un outil d’analyse et de diagnostic “forensic-lite” pour **smartphones/tablettes Android** via ADB.
-> Il produit un **rapport humain**, un **CSV/JSON horodaté**, et un **niveau de risque** (🟢 sain, 🟠 intrusif, 🔴 critique).
-> Fait pour **Kali Linux ARM64 (Raspberry Pi 5)** mais fonctionne aussi sur x86_64.
+![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![Shell](https://img.shields.io/badge/lang-shell-89e051.svg)
 
 ---
 
-## ✨ Fonctionnalités
+# 📦 Modules inclus
 
-- **Analyse hors/ligne** : infos système, apps, permissions sensibles, réseau/BT
-- **Évaluation du risque** : 🟢 **GREEN**, 🟠 **ORANGE**, 🔴 **RED** (codes retour: 0/10/20)
-- **Rapport humain** + **CSV/JSON** (horodatés)
-- **Questions opérateur (yes/no)** *après voyant ORANGE/ROUGE* :
-  - backup probatoire
-  - rapport “blockchain” (chaînage SHA)
-  - neutraliser apps suspectes (optionnel si IOC)
-  - reset usine (optionnel)
-- **Recommandations** claires (client & opérateur)
-- **Traçabilité** : SHA256 du rapport + **ledger** CSV global
+| Script | Plateforme | Fonction |
+|--------|------------|----------|
+| `scripts/ios_only.sh` | **iOS** | Backup, analyse MVT-iOS, extraction apps, IOC, scoring |
+| `android_only.sh` | **Android** | ADB triage, permissions, réseau, IOC, scoring |
 
 ---
 
-## 🧰 Prérequis
+# ✨ Fonctionnalités principales
 
+- Analyse **iOS + Android**
+- Backup complet ou rapide (iOS : MVT + idevicebackup2)
+- Extraction des apps & permissions
+- Analyse MVT-iOS automatique
+- IOC : spyware / parental / dual-use / fichiers / domaines
+- Scoring risque :
+  - 🟢 **GREEN** — sain  
+  - 🟠 **ORANGE** — douteux  
+  - 🔴 **RED** — intrusion ou spyware détecté  
+- Rapports complets :
+  - TXT (opérateur)  
+  - CSV (machine)  
+  - JSON (API friendly)
+- Coffre probatoire :
+  - archive tar.gz  
+  - manifeste JSON  
+  - SHA256SUMS  
+- Mode HORS-LIGNE total  
+- Inventaire apps (iOS : ideviceinstaller + fallback sqlite3 Manifest.db)
+
+---
+
+# 🍏 iOS Module — `scripts/ios_only.sh`
+
+## 🔍 Fonctions
+- Détection appareil (iPhone/iPad)
+- Backup :
+  - `mvt-ios backup` (flash/full)
+  - fallback `idevicebackup2`
+- Analyse automatique MVT-iOS  
+- Extraction apps :
+  - `ideviceinstaller`
+  - ou fallback `Manifest.db`
+- IOC fichiers & domaines  
+- Scoring GREEN/ORANGE/RED  
+- Rapport TXT + CSV + JSON  
+- Coffre probatoire SHA256  
+
+## ▶️ Lancement
+
+Analyse rapide :
 ```bash
-sudo apt update && sudo apt install -y android-tools-adb jq coreutils grep awk sed tar
+./scripts/ios_only.sh --quick
