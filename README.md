@@ -1,6 +1,6 @@
 # 📱🔍 **Lab4Phone — Mobile Forensics Toolkit (FR + EN)**
 
-Outils d’analyse **iOS & Android** : diagnostics, détection spyware, IOC, MVT, rapports, coffre probatoire.
+Outils d’analyse **iOS & Android** : diagnostics, détection spyware, IOC, MVT, rapports et coffre probatoire.
 Tools for **iOS & Android** diagnostics, spyware detection, IOC analysis, MVT, reporting & forensic vault.
 
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
@@ -20,17 +20,13 @@ Tools for **iOS & Android** diagnostics, spyware detection, IOC analysis, MVT, r
 # ✨ Fonctionnalités principales / Main Features
 
 * Analyse **iOS + Android**
-* Backups avancés (iOS : MVT + idevicebackup2 fallback)
+* Backups complets (MVT + `idevicebackup2`)
 * Extraction apps / permissions / réseau / Bluetooth
+* IOC : fichiers suspects + domaines malveillants
 * Détection spyware (parental, dual-use, mercenaire)
-* IOC : fichiers + domaines
-* Scoring risque :
-
-  * 🟢 **GREEN** — sain / clean
-  * 🟠 **ORANGE** — douteux / suspicious
-  * 🔴 **RED** — spyware détecté / spyware detected
-* Rapports : TXT + CSV + JSON
-* Coffre probatoire sécurisé : tar.gz + SHA256SUM + manifeste JSON
+* Scoring : 🟢 GREEN / 🟠 ORANGE / 🔴 RED
+* Rapports : TXT (opérateur), CSV (machine), JSON (API)
+* Coffre probatoire : archive tar.gz + SHA256SUM + manifeste JSON
 
 ---
 
@@ -38,8 +34,8 @@ Tools for **iOS & Android** diagnostics, spyware detection, IOC analysis, MVT, r
 
 ## 🇫🇷 Fonctions
 
-* Détection iPhone / iPad
-* Backups (MVT-iOS flash/full + fallback `idevicebackup2`)
+* Détection iPhone/iPad
+* Backups : MVT-iOS (flash/full) + fallback `idevicebackup2`
 * Analyse automatique MVT-iOS
 * Extraction apps (`ideviceinstaller` ou `Manifest.db`)
 * IOC fichiers & domaines
@@ -48,11 +44,11 @@ Tools for **iOS & Android** diagnostics, spyware detection, IOC analysis, MVT, r
 
 ## 🇬🇧 Features
 
-* Detects iPhone / iPad
-* Backup via MVT-iOS (flash/full)
+* Detects iPhone/iPad
+* Backups via MVT-iOS (flash/full)
 * Fallback to `idevicebackup2`
 * Automatic MVT-iOS analysis
-* App extraction (`ideviceinstaller` or Manifest.db)
+* App extraction (installer or Manifest.db)
 * IOC matching (files & domains)
 * Risk scoring
 * SHA256 forensic vault
@@ -63,27 +59,25 @@ Tools for **iOS & Android** diagnostics, spyware detection, IOC analysis, MVT, r
 
 ## 🇫🇷 Fonctions
 
-* Détection Android (ADB)
-* Infos système : build, version, stockage, IMEI*
+* Détection Android via ADB
+* Infos système (build, version, stockage, IMEI*)
 * Inventaire apps + permissions sensibles
 * Analyse réseau (interfaces, connexions, IP)
-* Analyse Bluetooth
-* IOC Android (apps, chemins, fichiers suspects)
+* Scan Bluetooth
+* IOC Android (apps/dossiers/fichiers suspects)
 * Scoring GREEN / ORANGE / RED
 * Rapports : TXT + CSV + JSON
 
-(*IMEI si accessible*)
-
 ## 🇬🇧 Features
 
-* Android detection (ADB)
-* System info: build, version, storage, IMEI*
+* Android detection via ADB
+* System info (build, version, storage, IMEI*)
 * Full app inventory + sensitive permissions
 * Network analysis
 * Bluetooth scan
 * Android IOC analysis
 * Risk scoring
-* Reports: TXT, CSV, JSON
+* TXT, CSV, JSON reports
 
 ---
 
@@ -99,9 +93,7 @@ sudo apt update && sudo apt install -y \
 
 # 🔐 Licence & Contributions
 
-* Licence : Apache-2.0
-* Contributions bienvenues
-* License : Apache-2.0
-* Pull requests welcome
+**FR :** Licence Apache-2.0 • Contributions bienvenues
+**EN :** Apache-2.0 License • Pull requests welcome
 
 ---
