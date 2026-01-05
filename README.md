@@ -90,9 +90,8 @@ sudo apt update && sudo apt install -y \
   jq coreutils grep awk sed tar sqlite3 \
   usbmuxd libimobiledevice-utils ideviceinstaller ifuse \
   usbutils udev \
-  iproute2 net-tools \
-  bluez rfkill \
-  curl unzip rsync
+  iproute2 \
+  bluez rfkill
 
 ```
 
