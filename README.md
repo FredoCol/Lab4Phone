@@ -85,8 +85,15 @@ Tools for **iOS & Android** diagnostics, spyware detection, IOC analysis, MVT, r
 
 ```
 sudo apt update && sudo apt install -y \
-  android-tools-adb jq coreutils grep awk sed tar sqlite3 \
-  usbmuxd libimobiledevice-utils
+  android-tools-adb aapt apktool \
+  python3 python3-venv python3-pip \
+  jq coreutils grep awk sed tar sqlite3 \
+  usbmuxd libimobiledevice-utils ideviceinstaller ifuse \
+  usbutils udev \
+  iproute2 net-tools \
+  bluez rfkill \
+  curl unzip rsync
+
 ```
 
 ---
