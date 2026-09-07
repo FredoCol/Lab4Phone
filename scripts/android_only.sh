@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Lab4Phone / Kit — ANDROID-ONLY v3-
+# Lab4Phone / Kit002 — ANDROID-ONLY v3.16-k02
 # Version complète stable — horodatage, résumé humain, causes, backup, blockchain, ledger, recommandations
-# Auteur : Sombra CyberLab Solution
+# Auteur : Sombra CyberTool Solution
 
 set -euo pipefail
 IFS=$'\n\t'
@@ -9,7 +9,9 @@ IFS=$'\n\t'
 START_S=$(date +%s)
 RUN_TS=$(date +%F_%H%M%S)
 HOST=$(hostname | tr -d ' ')
-BASE="/media/ssd/Sombra"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+BASE="${L4P_DATA_DIR:-${XDG_STATE_HOME:-$HOME/.local/state}/lab4phone}"
 REPORT_DIR="$BASE/reports/$HOST"
 BACKUP_DIR="$BASE/backups/$HOST"
 LEDGER_DIR="$BASE/ledger"
@@ -22,7 +24,7 @@ LOGFILE="$LOG_DIR/android_${RUN_TS}.log"
 
 exec > >(tee -a "$RAPPORT_FILE") 2>&1
 
-echo "[+] === Début Lab4Phone ANDROID-ONLY v3 ==="
+echo "[+] === Début Lab4Phone ANDROID-ONLY v3.16-k02 ==="
 echo "[i] Horodatage début : $(date)"
 
 # --- Vérification ADB
@@ -62,7 +64,7 @@ if [ "$HAS_OWNER" -eq 1 ]; then
 fi
 
 # --- IOC et indicateurs
-IOCS_DIR="$BASE/tools/iocs"
+IOCS_DIR="${L4P_IOCS_DIR:-$PROJECT_ROOT/indicators}"
 SUSPECTS_FILE="$REPORT_DIR/suspects_${RUN_TS}.txt"
 TMP_IND="$(mktemp)"
 cat "$IOCS_DIR"/indicators_android_*.txt 2>/dev/null | grep -v '^#' | sort -u > "$TMP_IND"
@@ -162,7 +164,7 @@ echo "$(date -u +%Y-%m-%dT%H:%M:%SZ),$HOST,$MODEL,$ANDROID_VER,$PATCH,$RISK,$SHA
 END_S=$(date +%s)
 ELAPSED=$((END_S - START_S))
 echo
-echo "=== Résumé opérateur (K0V3) ==="
+echo "=== Résumé opérateur (K02 v3.16) ==="
 echo "Modèle: $VENDOR / $MODEL | Android $ANDROID_VER ($PATCH)"
 echo "Risque: $ICON $RISK — Éléments potentiellement intrusifs"
 echo "--- Décisions opérateur ---"
@@ -171,4 +173,4 @@ echo "Rapport: $RAPPORT_FILE"
 echo "Durée d’analyse: ${ELAPSED}s"
 echo "[i] Ledger: $LEDGER"
 echo "[i] Horodatage fin : $(date)"
-echo "[+] === Fin Lab4Phone ANDROID-ONLY v3 ==="
+echo "[+] === Fin Lab4Phone ANDROID-ONLY v3.16-k02 ==="

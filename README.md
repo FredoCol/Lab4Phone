@@ -1,105 +1,104 @@
-# 📱🔍 **Lab4Phone — Mobile Forensics Toolkit (FR + EN)**
+# Lab4Phone
 
-Outils d’analyse **iOS & Android** : diagnostics, détection spyware, IOC, MVT, rapports et coffre probatoire.
-Tools for **iOS & Android** diagnostics, spyware detection, IOC analysis, MVT, reporting & forensic vault.
+Lab4Phone est un projet Sombra consacré au diagnostic de sécurité
+et à l'analyse forensic légère des smartphones Android et iOS.
 
-![License](https://img.shields.io/badge/license-Apache--2.0-blue)
-![Shell](https://img.shields.io/badge/lang-shell-89e051)
+> Statut : prototype en développement.
+>
+> Lab4Phone ne remplace pas une expertise judiciaire, un laboratoire
+> accrédité ou une plateforme commerciale de forensic mobile.
 
----
+## Modules publiés
 
-## 📦 Modules inclus / Included Modules
+| Module | Version | Statut |
+|---|---:|---|
+| Android Only | 3.16-k02 | Prototype fonctionnel |
+| iOS Only | 3.4-fix7c | Prototype fonctionnel |
+| IOC Library | développement | Expérimental |
+| Traffic Inspector | 0.5-dev | Expérimental |
 
-| Script                    | Plateforme / Platform | Fonction / Function                                           |
-| ------------------------- | --------------------- | ------------------------------------------------------------- |
-| `scripts/ios_only.sh`     | iOS                   | Backup, analyse MVT-iOS, extraction apps, IOC, scoring, vault |
-| `scripts/android_only.sh` | Android               | ADB triage, permissions, network, BT, IOC, scoring, reports   |
+## Android Only
 
----
+Fonctions actuellement présentes :
 
-# ✨ Fonctionnalités principales / Main Features
+- détection du terminal via ADB ;
+- informations système et niveau de correctif ;
+- inventaire des applications ;
+- contrôle des accès sensibles ;
+- recherche d'indicateurs locaux ;
+- score GREEN, ORANGE ou RED ;
+- rapport opérateur et empreinte SHA-256.
 
-* Analyse **iOS + Android**
-* Backups complets (MVT + `idevicebackup2`)
-* Extraction apps / permissions / réseau / Bluetooth
-* IOC : fichiers suspects + domaines malveillants
-* Détection spyware (parental, dual-use, mercenaire)
-* Scoring : 🟢 GREEN / 🟠 ORANGE / 🔴 RED
-* Rapports : TXT (opérateur), CSV (machine), JSON (API)
-* Coffre probatoire : archive tar.gz + SHA256SUM + manifeste JSON
+## iOS Only
 
----
+Fonctions actuellement présentes :
 
-# 🍏 iOS Module — `scripts/ios_only.sh`
+- détection et appairage iPhone/iPad ;
+- sauvegarde complète ou rapide ;
+- intégration MVT lorsqu'il est disponible ;
+- inventaire applicatif ;
+- recherche d'indicateurs ;
+- rapports TXT, CSV et JSON ;
+- coffre probatoire avec empreinte SHA-256.
 
-## 🇫🇷 Fonctions
+## Traffic Inspector
 
-* Détection iPhone/iPad
-* Backups : MVT-iOS (flash/full) + fallback `idevicebackup2`
-* Analyse automatique MVT-iOS
-* Extraction apps (`ideviceinstaller` ou `Manifest.db`)
-* IOC fichiers & domaines
-* Scoring GREEN / ORANGE / RED
-* Coffre probatoire SHA256
+Traffic Inspector crée un hotspot d'analyse sur une machine Linux dédiée,
+capture le trafic autorisé d'un équipement de test et produit un résumé
+des domaines, adresses IP, protocoles VPN et correspondances IOC.
 
-## 🇬🇧 Features
+Documentation :
+experimental/traffic-inspector/README.md
 
-* Detects iPhone/iPad
-* Backups via MVT-iOS (flash/full)
-* Fallback to `idevicebackup2`
-* Automatic MVT-iOS analysis
-* App extraction (installer or Manifest.db)
-* IOC matching (files & domains)
-* Risk scoring
-* SHA256 forensic vault
+## Installation
 
----
+    git clone https://github.com/FredoCol/Lab4Phone.git
+    cd Lab4Phone
+    chmod +x scripts/*.sh
 
-# 🤖 Android Module — `scripts/android_only.sh`
+Les dépendances varient selon le module :
 
-## 🇫🇷 Fonctions
+- ADB pour Android ;
+- libimobiledevice et MVT pour iOS ;
+- tcpdump, tshark, hostapd, dnsmasq et nftables pour Traffic Inspector.
 
-* Détection Android via ADB
-* Infos système (build, version, stockage, IMEI*)
-* Inventaire apps + permissions sensibles
-* Analyse réseau (interfaces, connexions, IP)
-* Scan Bluetooth
-* IOC Android (apps/dossiers/fichiers suspects)
-* Scoring GREEN / ORANGE / RED
-* Rapports : TXT + CSV + JSON
+## Stockage et configuration
 
-## 🇬🇧 Features
+Les rapports, sauvegardes, captures et journaux ne doivent jamais être
+publiés dans le dépôt.
 
-* Android detection via ADB
-* System info (build, version, storage, IMEI*)
-* Full app inventory + sensitive permissions
-* Network analysis
-* Bluetooth scan
-* Android IOC analysis
-* Risk scoring
-* TXT, CSV, JSON reports
+Variables disponibles :
 
----
+- L4P_DATA_DIR : données et rapports Android ;
+- L4P_IOCS_DIR : répertoire contenant indicators.csv ;
+- L4P_BASE_SSD : emplacement Lab4Phone sur SSD ;
+- L4P_TRAFFIC_HOME : données de Traffic Inspector.
 
-# 🛠 Prérequis / Requirements
+## Indicateurs
 
-```
-sudo apt update && sudo apt install -y \
-  android-tools-adb aapt apktool \
-  python3 python3-venv python3-pip \
-  jq coreutils grep awk sed tar sqlite3 \
-  usbmuxd libimobiledevice-utils ideviceinstaller ifuse \
-  usbutils udev \
-  iproute2 \
-  bluez rfkill
+Les bases opérationnelles d'IOC et de CVE ne sont pas distribuées dans
+ce dépôt. Un exemple entièrement fictif sera fourni dans indicators/.
 
-```
+## Cadre d'utilisation
 
----
+Utilisez ces outils uniquement :
 
-# 🔐 Licence & Contributions
+- sur vos propres appareils et réseaux ;
+- avec l'autorisation explicite du propriétaire ;
+- dans un laboratoire ou un cadre professionnel légal.
 
-**FR :** Licence Apache-2.0 • Contributions bienvenues
-**EN :** Apache-2.0 License • Pull requests welcome
+Les résultats constituent des éléments d'orientation qui doivent être
+confirmés par une analyse humaine.
 
----
+## Projet
+
+Projet personnel maintenu par FredoCol sous l'identité Sombra.
+
+Les retours terrain, signalements de bugs et propositions d'amélioration
+sont bienvenus.
+
+## Utilisation du code
+
+Aucune licence open source n’est accordée à ce stade.
+Le code est publié pour consultation, retours techniques et signalement de bugs.
+Tous droits réservés.
