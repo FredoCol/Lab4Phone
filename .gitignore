@@ -1,0 +1,38 @@
+# Données privées et résultats opérationnels
+backups/
+reports/
+logs/
+captures/
+tmp/
+*.pcap
+*.pcapng
+*.log
+*.pid
+*.lease
+
+# Secrets et configuration locale
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.mobileconfig
+hostapd.conf
+dnsmasq.conf
+
+# Bases volumineuses générées localement
+cve_db/
+updates_offline/
+indicators/*.csv
+indicators/*.txt
+!indicators/README.md
+
+# Sauvegardes et fichiers temporaires
+*.bak
+*.bak_*
+*.prepatch_*
+*~
+*.swp
+__pycache__/
+.venv/
+!indicators/example.csv

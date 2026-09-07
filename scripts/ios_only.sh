@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Lab4Phone — IOS-ONLY v3.4-fix7c
+# Lab4Phone — IOS-ONLY v3.4-fix7c (K2)
 # Usage:
 #   ios [--offline] [--refresh-iocs] [--quick|--full] [--skip-mvt]
 #       [--export-artifacts] [--evidence] [--full-inventory] [--max-apps N]

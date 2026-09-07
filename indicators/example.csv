@@ -1,0 +1,3 @@
+category,type,match,value,severity,notes
+DEMO,package,android,com.example.demo,1,Exemple fictif
+DEMO,pattern,ios,ExampleApp,1,Exemple fictif
